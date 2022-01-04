@@ -6,36 +6,29 @@ Based on the tutorial of Kevin Powell on [Scrimba](https://scrimba.com/learn/spa
 
 _Data before Styling_
 
-### Making the pages
+### Making the pages and Layout
 
-- Index
-- Destinations
+- Layout ✅
+- Index ✅
+- Destinations ✅
   - Subpages
-- Crew
+- Crew ✅
   - Subpages
-- Technolgy
+- Technolgy ✅
   - Subpages
+- 404 ✅
 
 ### Fetching data for pages
 
-According to [doc](https://docs.astro.build/en/guides/data-fetching/)
-
-    ---
-    // Movies.astro
-    const response = await fetch('https://example.com/movies.json');
-    const data = await response.json();
-    // Remember: Astro component scripts log to the CLI
-    console.log(data);
-    ---
-    <!-- Output the result to the page -->
-    <div>{JSON.stringify(data)}</div>`
+Getting local json files as imports
 
 ### Set up the components with semantic HTML
 
-- Navbar
+- Navbar ✅
 - Button
 - Title
 - Tabs/dots/Numbers
+- SEO ✅
 
 ## Tabs functionality
 
