@@ -6,21 +6,19 @@ import data from "../../data/data.json"
 
 
 
-
 export async function getStaticPaths() {
-    return data.destinations.map((d)=>{
+    return data.crew.map((d)=>{
    
         return{
-            params:{slug: d.name.toLowerCase()},
+            params:{slug: d.name.toLowerCase().split(" ").join("-")},
             props:{post: d}
         }
     })
 }
 
 
-// console.log(Astro.props);
+console.log(Astro.props);
 const {name,images,description,distance,travel} = Astro.props.post
-
 
 let title = `Space Travel | ${name}`;
 let Metadescription = "Space Travel Project";
@@ -28,12 +26,14 @@ const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
 
 
+
+
 ---
 <Layout title={title} description={Metadescription} permalink={permalink} {canonicalURL}>
-    {data.destinations.map((destination)=>{
+    {data.crew.map((member)=>{
         return (
-            <a href=`/destination/${destination.name.toLowerCase()}`>
-                {destination.name}
+            <a href=`/crew/${member.name.toLowerCase().split(" ").join("-")}`>
+                {member.name}
             </a>
         )
     })}
