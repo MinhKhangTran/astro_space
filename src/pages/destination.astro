@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro"
+import data from "../data/data.json"
+
+let title = "Space Travel | Destination";
+let description = "Space Travel Project";
+const permalink = Astro.site.href;
+let canonicalURL = Astro.request.canonicalURL;
+
+
+console.log(data);
+
+---
+<Layout title={title} description={description} permalink={permalink} current="about" {canonicalURL}>
+	
+</Layout>

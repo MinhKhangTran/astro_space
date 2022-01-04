@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro"
+
+
+
+let title = "Space Travel | Technology";
+let description = "Space Travel Project";
+const permalink = Astro.site.href;
+let canonicalURL = Astro.request.canonicalURL;
+---
+<Layout title={title} description={description} permalink={permalink} current="about" {canonicalURL}>
+	<h1>
+		{title}
+	</h1>
+</Layout>
