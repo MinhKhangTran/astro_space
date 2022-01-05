@@ -1,0 +1,297 @@
+/* ----------------------------- */
+/* Custom Properties             */
+/* ----------------------------- */
+:root {
+  /* colors */
+  --dark: 230 35% 7%;
+  --accent: 208 77% 90%;
+  --light: 0 0% 100%;
+
+  /* font-families */
+  --ff-serif: "Bellefair", serif;
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-sans-normal: "Barlow", sans-serif;
+
+  /* font-sizes */
+  --fs-900: 5rem;
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
+  --fs-500: 1rem;
+  --fs-400: 1.75rem;
+  --fs-300: 0.875rem;
+  --fs-200: 0.875rem;
+  --fs-100: 0.9375rem;
+
+  /* letter spacing */
+  --letter-spacing-1: 2.7px;
+  --letter-spacing-2: 2.35px;
+  --letter-spacing-3: 2.35px;
+}
+
+/* font-sizes & letter spacing tablet */
+@media (min-width: 35em) {
+  :root {
+    /* font-sizes */
+    --fs-900: 9.375rem;
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-100: 1rem;
+
+    /* letter spacing */
+    --letter-spacing-1: 3.38px;
+  }
+}
+/* font-sizes & letter spacing desktop */
+@media (min-width: 45em) {
+  :root {
+    /* font-sizes */
+
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+
+    --fs-200: 1rem;
+    --fs-100: 1.125rem;
+
+    /* letter spacing */
+    --letter-spacing-1: 4.75px;
+    --letter-spacing-2: 2.7px;
+  }
+}
+
+/* ----------------------------- */
+/* Reset                         */
+/* ----------------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset Margins */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* Body */
+
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-100);
+  color: hsl(var(--light));
+  background-color: hsl(var(--dark));
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Images */
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Forms */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Animation */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------- */
+/* Utility Classes               */
+/* ----------------------------- */
+
+/* general */
+.d-flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.d-grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.d-block {
+  display: block;
+}
+
+/* * + * === *:not(:first-child) with where higher specificity  */
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.flow-space--small {
+  --flow-space: 0.75rem;
+}
+
+.container {
+  padding-inline: 2em;
+  margin-inline: auto;
+  max-width: 80rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+.skip-to-content {
+  background: hsl(var(--light));
+  color: hsl(var(--dark));
+  padding: 0.5em 1em;
+  margin-inline: auto;
+  transform: translateY(-120%);
+  transition: transform 500ms ease-in;
+  position: absolute;
+  z-index: 1000;
+}
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
+/* colors */
+
+.bg-dark {
+  background-color: hsl(var(--dark));
+}
+.bg-accent {
+  background-color: hsl(var(--accent));
+}
+.bg-white {
+  background-color: hsl(var(--light));
+}
+
+.text-dark {
+  color: hsl(var(--dark));
+}
+.text-accent {
+  color: hsl(var(--accent));
+}
+.text-white {
+  color: hsl(var(--light));
+}
+
+/* typography */
+
+.ff-serif {
+  font-family: var(--ff-serif);
+}
+.ff-sans-cond {
+  font-family: var(--ff-sans-cond);
+}
+.ff-sans-normal {
+  font-family: var(--ff-sans-normal);
+}
+
+.h5-space {
+  letter-spacing: var(--letter-spacing-1);
+}
+.nav-space {
+  letter-spacing: var(--letter-spacing-2);
+}
+.s-h2-space {
+  letter-spacing: var(--letter-spacing-3);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.h1 {
+  font-size: var(--fs-900);
+}
+
+.h2 {
+  font-size: var(--fs-800);
+}
+
+.h3 {
+  font-size: var(--fs-700);
+}
+
+.h4 {
+  font-size: var(--fs-600);
+}
+
+.h5 {
+  font-size: var(--fs-500);
+}
+
+.s-h1 {
+  font-size: var(--fs-400);
+}
+
+.s-h2 {
+  font-size: var(--fs-300);
+}
+
+.nav {
+  font-size: var(--fs-200);
+}
+
+/* not necessary because was defined globally at body */
+/* .body {
+  font-size: var(--fs-100);
+} */
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  line-height: 1.1;
+}

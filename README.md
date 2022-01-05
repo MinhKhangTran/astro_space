@@ -11,16 +11,16 @@ _Data before Styling_
 - Layout ✅
 - Index ✅
 - Destinations ✅
-  - Subpages
+  - Subpages✅
 - Crew ✅
-  - Subpages
+  - Subpages✅
 - Technolgy ✅
-  - Subpages
+  - Subpages✅
 - 404 ✅
 
 ### Fetching data for pages
 
-Getting local json files as imports
+Getting local json files as imports✅
 
 ### Set up the components with semantic HTML
 
@@ -34,12 +34,12 @@ Getting local json files as imports
 
 ## Styling
 
-- Variables
+- Variables✅
 
-  - Colors
-  - Font family
-  - Font size
+  - Colors✅
+  - Font family✅
+  - Font size✅
 
-- Reset
-- Utility classes
+- Reset✅
+- Utility classes✅
 - Component and Page specific styles
