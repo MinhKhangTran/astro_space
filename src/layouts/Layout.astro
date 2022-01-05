@@ -20,7 +20,8 @@ const { title, description, permalink, current,canonicalURL } = Astro.props;
   </head>
 
   <body>
-    <Navbar/>
+    <a class="skip-to-content" href="#main-content">Skip to content</a>
+    <Navbar current={current}/>
 
     <main id="main-content" aria-label="main">
       <slot/>

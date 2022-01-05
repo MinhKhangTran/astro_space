@@ -29,7 +29,7 @@ let canonicalURL = Astro.request.canonicalURL;
 
 
 ---
-<Layout title={title} description={Metadescription} permalink={permalink} {canonicalURL}>
+<Layout title={title} description={Metadescription} current="technology" permalink={permalink} {canonicalURL}>
     {data.technology.map((tech)=>{
         return (
             <a href=`/technology/${tech.name.toLowerCase().split(" ").join("-")}`>
