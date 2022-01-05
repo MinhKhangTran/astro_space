@@ -48,7 +48,7 @@ const {current} = Astro.props
             z-index: 2000;
             background: transparent;
             border: none;
-            background-image: url(../../public/assets/shared/icon-hamburger.svg);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='21'%3E%3Cg fill='%23D0D6F9' fill-rule='evenodd'%3E%3Cpath d='M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z'/%3E%3C/g%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: center;
             width: 1.5rem;
@@ -56,7 +56,7 @@ const {current} = Astro.props
             cursor: pointer;
 
             &[aria-expanded="true"] {
-                background-image: url(../../public/assets/shared/icon-close.svg);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='21'%3E%3Cg fill='%23D0D6F9' fill-rule='evenodd'%3E%3Cpath d='M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z'/%3E%3Cpath d='M.454 17.925L17.424.955l2.122 2.12-16.97 16.97z'/%3E%3C/g%3E%3C/svg%3E");
             }
             &:focus-visible{
                 outline: 5px solid white;
