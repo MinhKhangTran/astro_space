@@ -130,6 +130,10 @@ select {
   font: inherit;
 }
 
+ul {
+  list-style: none;
+}
+
 /* Animation */
 
 @media (prefers-reduced-motion: reduce) {

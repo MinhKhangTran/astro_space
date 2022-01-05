@@ -1,10 +1,81 @@
+<style lang="scss">
+    header{
+        align-items: center;
+        justify-content: space-between;
+    }
+    button {
+        display: none;
+    }
+    #primary-navigation{
+        --gap: clamp(1.5rem, 5vw, 3.5rem);
+        --underline-gap: 2rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: hsl(var(--dark) / 0.95);
+        /* backdrop-filter: blur(1rem); */
+        & a{
+            text-decoration: none;
+        }
+        & a > span{
+            font-weight: 700;
+            margin-right: .5em;
+        }
+    }
 
-<header aria-label="navigation">
-    <nav>
+    @media (max-width: 35em) {
+        button {
+            display: block;
+            position: absolute;
+            top: 2rem;
+            right: 1.5rem;
+                   
+            z-index: 2000;
+            background: transparent;
+            border: none;
+            background-image: url(../../public/assets/shared/icon-hamburger.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 1.5rem;
+            aspect-ratio: 1;
+            cursor: pointer;
+
+            &[aria-expanded="true"] {
+                background-image: url(../../public/assets/shared/icon-close.svg);
+            }
+        }
+        #primary-navigation {
+            --underline-gap: .5rem;
+            position: fixed;
+            z-index: 1000;
+            inset: 0 0 0 30%;
+            padding: min(20rem, 15vh) 2rem;
+            margin: 0;
+            flex-direction: column;
+            /* transform: translateX(100%); */
+            transition: transform 500ms ease-in-out;
+
+        }
+    }
+    @supports (backdrop-filter: blur(1rem)) {
+    #primary-navigation {
+        background: hsl(var(--light) / 0.05);
+        backdrop-filter: blur(1.5rem);
+    }
+    }
+
+</style>
+<header aria-label="navigation" class="d-flex">
+    <div>
         <a href="/">
             <img src="/assets/shared/logo.svg" alt="logo of space travel"/>
         </a>
-        <ul>
+    </div>
+    <button aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only" >Menu</span>
+    </button>
+    <nav>
+        <ul id="primary-navigation" data-visible="false">
             <li>
                 <a href="/">Home</a>
             </li>
