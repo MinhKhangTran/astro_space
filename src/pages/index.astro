@@ -8,8 +8,27 @@ const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
 ---
 <style lang="scss">
+	main{
+		text-align: center;
+		margin-top: 3rem;
+		.home_text{
+			span{
+				padding-block: 1rem;
+			}
+			p{
+				max-width: 40ch;
+				margin-inline: auto;
+			}
+		}
+	}
+	@media (min-width: 35em){
+		main{
+			margin-top: 6rem;
+		}
+	}
 	@media (min-width: 45em){
 		main{
+			text-align: left;
 			display: grid;
 			grid-template-columns: 10rem 1fr 1fr 10rem;
 			.home_text{
@@ -18,7 +37,8 @@ let canonicalURL = Astro.request.canonicalURL;
 				padding-bottom: 8rem;
 				p{
 					padding-top: 1.5rem;
-					width: 27.75rem;
+					max-width: 27.75rem;
+					margin:0;
 				}
 			}
 		}

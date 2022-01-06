@@ -2,6 +2,10 @@
 const {text} = Astro.props
 ---
 <style lang="scss">
+    div{
+        display: flex;
+        justify-content: center;
+    }
     a{
         text-decoration: none;
         width: 9.375rem; 
@@ -12,9 +16,8 @@ const {text} = Astro.props
         place-items: center;
         position: relative;
         z-index: 1;
-        align-self: end;
-        justify-self: end;
-        margin-bottom: 8rem;
+        margin-top: 5rem;
+
         &::after{
             content: "";
             position: absolute;
@@ -31,13 +34,25 @@ const {text} = Astro.props
             opacity: 1;
         }
     }
+    @media (min-width: 35em){
+        a{
+            width: 15.125rem;
+            margin-top: 9.75rem;
+        }
+    }
     @media (min-width: 45em){
+        div{
+            align-self: end;
+            justify-self: end;
+            margin-bottom: 8rem;
+        }
         a{
             width: 17.125rem;
         }
     }
 </style>
-
-<a class="bg-light uppercase text-dark h4 ff-serif" href="/destination/moon">
-	{text}
-</a>
+<div>
+    <a class="bg-light uppercase text-dark h4 ff-serif" href="/destination/moon">
+        {text}
+    </a>
+</div>
