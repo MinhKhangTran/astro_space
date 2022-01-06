@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro"
+import Title from "../../components/Title.astro"
 import data from "../../data/data.json"
 
 
@@ -21,22 +22,22 @@ export async function getStaticPaths() {
 // console.log(Astro.props);
 const {name,images,description,distance,travel} = Astro.props.post
 
-
 let title = `Space Travel | ${name}`;
 let Metadescription = "Space Travel Project";
 const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
-
-
 ---
 <Layout title={title} description={Metadescription} current="destination" permalink={permalink} {canonicalURL}>
-    {data.destinations.map((destination)=>{
-        return (
-            <a href=`/destination/${destination.name.toLowerCase()}`>
-                {destination.name}
-            </a>
-        )
-    })}
-	<h1>{name}</h1>
-    <img src={images.webp.substring(1)} alt={name}/>
+    <main id="main-content" aria-label="main">
+        <Title number="01" title="pick your destination"/>
+        {data.destinations.map((destination)=>{
+            return (
+                <a href=`/destination/${destination.name.toLowerCase()}`>
+                    {destination.name}
+                </a>
+            )
+        })}
+        <h1>{name}</h1>
+        <img src={images.webp.substring(1)} alt={name}/>
+    </main>
 </Layout>
