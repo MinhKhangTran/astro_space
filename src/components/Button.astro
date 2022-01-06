@@ -1,0 +1,43 @@
+---
+const {text} = Astro.props
+---
+<style lang="scss">
+    a{
+        text-decoration: none;
+        width: 9.375rem; 
+        aspect-ratio: 1;  
+        grid-column: 3;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        position: relative;
+        z-index: 1;
+        align-self: end;
+        justify-self: end;
+        margin-bottom: 8rem;
+        &::after{
+            content: "";
+            position: absolute;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            background: hsl(var(--light) / 0.15);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 500ms linear, transform 750ms ease-in-out;
+        }
+        &:hover::after,&:focus::after{
+            transform: scale(1.5);
+            opacity: 1;
+        }
+    }
+    @media (min-width: 45em){
+        a{
+            width: 17.125rem;
+        }
+    }
+</style>
+
+<a class="bg-light uppercase text-dark h4 ff-serif" href="/destination/moon">
+	{text}
+</a>

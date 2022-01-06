@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Navbar from '../components/Navbar.astro';
 
 
+
 export interface Props {
   title: string;
   description: string;
@@ -19,13 +20,16 @@ const { title, description, permalink, current,canonicalURL } = Astro.props;
     
   </head>
 
-  <body>
+
+
+
+  <body class={current}>
     <a class="skip-to-content" href="#main-content">Skip to content</a>
     <Navbar current={current}/>
 
-    <main id="main-content" aria-label="main">
+  
       <slot/>
-    </main>
+ 
 
   </body>
 </html>

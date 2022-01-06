@@ -1,21 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro"
-
-
+import Button from "../components/Button.astro"
 
 let title = "Space Travel | Homepage";
 let description = "Space Travel Project";
 const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
 ---
+<style lang="scss">
+	@media (min-width: 45em){
+		main{
+			display: grid;
+			grid-template-columns: 10rem 1fr 1fr 10rem;
+			.home_text{
+				grid-column: 2;
+				align-self: end;
+				padding-bottom: 8rem;
+				p{
+					padding-top: 1.5rem;
+					width: 27.75rem;
+				}
+			}
+		}
+	}
+	
+</style>
 <Layout title={title} description={description} permalink={permalink} current="home" {canonicalURL}>
-	<h1>
-		So, you want to travel to <span>Space</span>
-	</h1>
-	<p>
-		Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!
-	</p>
-	<a href="/destination/moon">
-		Explore
-	</a>
+	<main id="main-content" aria-label="main">
+		<div class="home_text">
+			<h1 class="h5 h5-space ff-sans-cond text-accent uppercase">
+				So, you want to travel to <span class="d-block h1 ff-serif text-light">Space</span>
+			</h1>
+			<p class="text-accent">
+				Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!
+			</p>
+		</div>
+		<Button text="explore"/>
+	</main>
 </Layout>

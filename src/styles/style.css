@@ -112,6 +112,9 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
 /* Images */
@@ -217,7 +220,7 @@ ul {
   background-color: hsl(var(--accent));
 }
 .bg-light {
-  background-color: hsl(var(--s));
+  background-color: hsl(var(--light));
 }
 
 .text-dark {
@@ -368,4 +371,87 @@ ul {
 .number-indicators > [aria-selected="true"] {
   background-color: hsl(var(--light));
   color: hsl(var(--dark));
+}
+
+/* page specific */
+
+body {
+  background-size: cover;
+  background-position: bottom center;
+}
+
+/* Homepage */
+
+.home {
+  background-image: url("./home/background-home-mobile.jpg");
+}
+
+@media (min-width: 35em) {
+  .home {
+    background-position: center center;
+    background-image: url(./home/background-home-tablet.jpg);
+  }
+}
+
+@media (min-width: 45em) {
+  .home {
+    background-image: url(./home/background-home-desktop.jpg);
+  }
+}
+
+/* destination */
+
+.destination {
+  background-image: url("./destination/background-destination-mobile.jpg");
+}
+
+@media (min-width: 35em) {
+  .destination {
+    background-position: center center;
+    background-image: url(./destination/background-destination-tablet.jpg);
+  }
+}
+
+@media (min-width: 45em) {
+  .destination {
+    background-image: url(./destination/background-destination-desktop.jpg);
+  }
+}
+
+/* crew */
+
+.crew {
+  background-image: url("./crew/background-crew-mobile.jpg");
+}
+
+@media (min-width: 35em) {
+  .crew {
+    background-position: center center;
+    background-image: url(./crew/background-crew-tablet.jpg);
+  }
+}
+
+@media (min-width: 45em) {
+  .crew {
+    background-image: url(./crew/background-crew-desktop.jpg);
+  }
+}
+
+/* technology */
+
+.technology {
+  background-image: url("./technology/background-technology-mobile.jpg");
+}
+
+@media (min-width: 35em) {
+  .technology {
+    background-position: center center;
+    background-image: url(./technology/background-technology-tablet.jpg);
+  }
+}
+
+@media (min-width: 45em) {
+  .technology {
+    background-image: url(./technology/background-technology-desktop.jpg);
+  }
 }
