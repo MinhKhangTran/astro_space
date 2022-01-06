@@ -23,49 +23,92 @@ let Metadescription = "Space Travel Project";
 const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
 
-console.log("Slug: " + slug);
-console.log("Name: " + name.toLowerCase());
+// console.log("Slug: " + slug);
+// console.log("Name: " + name.toLowerCase());
 
 ---
 <style>
     main{
         display: grid;
-        text-align: left;
-        grid-template-columns: 10rem 1fr 1fr 10rem;
+        text-align: center;
         column-gap: var(--container-gap, 2rem);
-        justify-items: start;
-        align-content: start;
-        grid-template-areas: 
-        ". title title ."
-        ". image tabs ."
-        ". image content ."
-        ;
+        padding-inline: 2rem;
+        grid-template-areas:
+                "title"
+                "image"
+                "tabs"
+                "content";
+       
         padding-bottom: 4rem;
     }
     .image{
         grid-area: image;
         max-width: 60%;
-        padding-top: 6rem;
+        display: flex;
+        margin-inline: auto;
+        padding-bottom: 2rem;
+        
     }
     .content{
         grid-area: content;
     }
     .tab-list{
         grid-area: tabs;
+        justify-content: center;
     }
     a{
         text-decoration: none;
     }
     p{
         max-width: 50ch;
+        margin-inline: auto;
     }
     .destination-meta {
-    flex-direction: row;
+    flex-direction: column;
     border-top: 1px solid hsl(var(--light) / 0.1);
     padding-top: 2.5rem;
     margin-top: 2.5rem;
     --gap: min(6vw, 6rem);
-    justify-content: start;
+    justify-content: center;
+    }
+    @media (min-width:35em){
+        .destination-meta{
+            flex-direction: row;
+        }
+        main{
+            --flow-space: 2rem;
+            grid-template-areas:
+                "title"
+                "image"
+                "tabs"
+                "content";
+                    }
+        .image{
+            padding-bottom: 3rem;
+        }
+    }
+    @media (min-width:45em){
+        main{
+            text-align: left;
+            grid-template-columns: 10rem 1fr 1fr 10rem;
+            grid-template-areas: 
+            ". title title ."
+            ". image tabs ."
+            ". image content ."
+        ;
+           justify-items: start;
+            align-content: start;
+        }
+        .image{
+            padding-top: 3rem;
+            max-width: 90%;
+            margin-inline: 0;
+            
+        }
+        .destination-meta{
+            justify-content: start;
+        }
+
     }
 
   
@@ -76,7 +119,7 @@ console.log("Name: " + name.toLowerCase());
         <div class="image">
             <img src={images.webp.substring(1)} alt={name}/>
         </div>
-        <div class="tab-list underline-indicators d-flex">
+        <div class="tab-list underline-indicators d-flex" style="--underline-gap: 0.5rem">
             {data.destinations.map((destination)=>{
                 return (
                         <a class={`uppercase ff-sans-cond text-accent nav-space ${slug === destination.name.toLowerCase()?"active":""}`} href=`/destination/${destination.name.toLowerCase()}`>
@@ -90,12 +133,12 @@ console.log("Name: " + name.toLowerCase());
             <p class="text-accent">{description}</p>
                 <div class="destination-meta d-flex">
                     <div>
-                        <h3 class="text-accent fs-200 uppercase s-h1">Avg. distance</h3>
-                        <p class="ff-serif uppercase s-h2">384,400 km</p>
+                        <h3 class="text-accent fs-200 uppercase s-h2">Avg. distance</h3>
+                        <p class="ff-serif uppercase s-h1">384,400 km</p>
                     </div>
                     <div>
-                        <h3 class="text-accent fs-200 uppercase s-h1">Est. travel time</h3>
-                        <p class="ff-serif uppercase s-h2">3 days</p>
+                        <h3 class="text-accent fs-200 uppercase s-h2">Est. travel time</h3>
+                        <p class="ff-serif uppercase s-h1">3 days</p>
                     </div>
                 </div>
         </div>

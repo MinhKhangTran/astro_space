@@ -4,6 +4,7 @@ const {title,number} = Astro.props
 <style>
     h1{
         grid-area: title;
+        margin-top: 3rem;
     }
     span{
         margin-right: 1.125rem;
@@ -11,7 +12,12 @@ const {title,number} = Astro.props
         font-weight: bold;
     }
     @media (min-widht: 45em){
-        margin-right: 1.75rem;
+        h1{
+            margin-top: 5rem;
+        }
+        span{
+            margin-right: 1.75rem;
+        }
     }
 </style>
 <h1 class="h5 h5-space uppercase"><span>{number}</span>{title}</h1>
