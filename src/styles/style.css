@@ -320,8 +320,8 @@ ul {
 
 .underline-indicators > li:hover,
 .underline-indicators > li:focus,
-.underline-indicators > button:hover,
-.underline-indicators > button:focus {
+.underline-indicators > a:hover,
+.underline-indicators > a:focus {
   border-color: hsl(var(--light) / 0.5);
 }
 

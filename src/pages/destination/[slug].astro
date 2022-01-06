@@ -3,11 +3,6 @@ import Layout from "../../layouts/Layout.astro"
 import Title from "../../components/Title.astro"
 import data from "../../data/data.json"
 
-
-
-
-
-
 export async function getStaticPaths() {
     return data.destinations.map((d)=>{
    
@@ -19,25 +14,90 @@ export async function getStaticPaths() {
 }
 
 
-// console.log(Astro.props);
+
+const {slug}= Astro.request.params
 const {name,images,description,distance,travel} = Astro.props.post
 
 let title = `Space Travel | ${name}`;
 let Metadescription = "Space Travel Project";
 const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
+
+console.log("Slug: " + slug);
+console.log("Name: " + name.toLowerCase());
+
 ---
-<Layout title={title} description={Metadescription} current="destination" permalink={permalink} {canonicalURL}>
-    <main id="main-content" aria-label="main">
+<style>
+    main{
+        display: grid;
+        text-align: left;
+        grid-template-columns: 10rem 1fr 1fr 10rem;
+        column-gap: var(--container-gap, 2rem);
+        justify-items: start;
+        align-content: start;
+        grid-template-areas: 
+        ". title title ."
+        ". image tabs ."
+        ". image content ."
+        ;
+        padding-bottom: 4rem;
+    }
+    .image{
+        grid-area: image;
+        max-width: 60%;
+        padding-top: 6rem;
+    }
+    .content{
+        grid-area: content;
+    }
+    .tab-list{
+        grid-area: tabs;
+    }
+    a{
+        text-decoration: none;
+    }
+    p{
+        max-width: 50ch;
+    }
+    .destination-meta {
+    flex-direction: row;
+    border-top: 1px solid hsl(var(--light) / 0.1);
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    --gap: min(6vw, 6rem);
+    justify-content: start;
+    }
+
+  
+</style>
+<Layout title={title} description={Metadescription} current={`destination`}  permalink={permalink} {canonicalURL}>
+    <main class="flow" id="main-content" aria-label="main">
         <Title number="01" title="pick your destination"/>
-        {data.destinations.map((destination)=>{
-            return (
-                <a href=`/destination/${destination.name.toLowerCase()}`>
-                    {destination.name}
-                </a>
-            )
-        })}
-        <h1>{name}</h1>
-        <img src={images.webp.substring(1)} alt={name}/>
+        <div class="image">
+            <img src={images.webp.substring(1)} alt={name}/>
+        </div>
+        <div class="tab-list underline-indicators d-flex">
+            {data.destinations.map((destination)=>{
+                return (
+                        <a class={`uppercase ff-sans-cond text-accent nav-space ${slug === destination.name.toLowerCase()?"active":""}`} href=`/destination/${destination.name.toLowerCase()}`>
+                            {destination.name}
+                        </a>
+                )
+            })}
+        </div>
+        <div class="content flow">
+            <h2 class="uppercase h2 ff-serif">{name}</h2>
+            <p class="text-accent">{description}</p>
+                <div class="destination-meta d-flex">
+                    <div>
+                        <h3 class="text-accent fs-200 uppercase s-h1">Avg. distance</h3>
+                        <p class="ff-serif uppercase s-h2">384,400 km</p>
+                    </div>
+                    <div>
+                        <h3 class="text-accent fs-200 uppercase s-h1">Est. travel time</h3>
+                        <p class="ff-serif uppercase s-h2">3 days</p>
+                    </div>
+                </div>
+        </div>
     </main>
 </Layout>
