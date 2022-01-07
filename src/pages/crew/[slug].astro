@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro"
+import Title from "../../components/Title.astro"
 import data from "../../data/data.json"
 
 
@@ -17,26 +18,119 @@ export async function getStaticPaths() {
 }
 
 
-// console.log(Astro.props);
-const {name,images,description,distance,travel} = Astro.props.post
+const {slug}= Astro.request.params
+const {name,images,role,bio} = Astro.props.post
 
 let title = `Space Travel | ${name}`;
 let Metadescription = "Space Travel Project";
 const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
 
+console.log(Astro.props);
 
 
 
 ---
+<style>
+    main{
+        display: grid;
+        text-align: center;
+        column-gap: var(--container-gap, 2rem);
+        padding-inline: 1rem;
+        grid-template-areas:
+                "title"
+                "image"
+                "tabs"
+                "content";
+    }
+    .image{
+        grid-area: image;
+        max-width: 60%;
+        aspect-ratio: 1;
+        border-bottom: 1px solid hsl(var(--light) / 0.1);
+        margin-inline: auto;
+    }
+    .content{
+        grid-area: content;
+    }
+    .tab-list{
+        grid-area: tabs;
+        justify-content: center;
+        height: 15px;
+    }
+    a{
+        text-decoration: none;
+    }
+    p{
+        max-width: 50ch;
+        margin-inline: auto;
+    }
+    .role{
+        color: hsl(var(--light) / 0.5);
+    }
+    @media (min-width:23.5em){
+        main{
+            --flow-space: 2rem;
+            grid-template-areas:
+                "title"
+                "content"
+                "tabs"
+                "image";
+                    }
+        .image{
+            margin-top: 3rem;
+        }
+        .tab-list{
+            margin-top: 3rem;
+        }
+    }
+    @media (min-width:48.1em){
+        main{
+            text-align: left;
+            justify-items: start;
+            grid-template-columns: 10rem 1fr 1fr 10rem;
+            grid-template-areas: 
+            ". title title ."
+            ". content image ."
+            ". tabs image ."
+        ;
+        }
+        .image{
+            max-width: 90%;
+            margin-inline: 0;
+            grid-column: span 2;
+            align-self: end;
+            padding-bottom: 0rem;
+        }
+        p{
+            margin:1.5rem 0 0 0;
+        }
+      
+
+    }
+
+  
+</style>
+
 <Layout title={title} description={Metadescription} current="crew" permalink={permalink} {canonicalURL}>
-    {data.crew.map((member)=>{
-        return (
-            <a href=`/crew/${member.name.toLowerCase().split(" ").join("-")}`>
-                {member.name}
-            </a>
-        )
-    })}
-	<h1>{name}</h1>
-    <img src={images.webp.substring(1)} alt={name}/>
+    <main class="flow" id="main-content" aria-label="main" style="--flow-space: 1rem">
+        <Title number="02" title="meet your crew"/>
+        <article class="content flow" style="margin-top: 2rem">
+            <p class="h4 ff-serif uppercase role">{role}</p>
+            <h1 class="h3 uppercase ff-serif">{name}</h1>
+            <p class="text-accent">{bio}</p>
+        </article>
+          <div class="tab-list dot-indicators d-flex">
+            {data.crew.map((member)=>{
+                return (
+                    <a aria-selected={`${slug === member.name.toLowerCase().split(" ").join("-")?"true":"false"}`} href=`/crew/${member.name.toLowerCase().split(" ").join("-")}`>
+                        <span class="sr-only">{member.name}</span>
+                    </a>
+                )
+            })}
+        </div>
+        <div class="image" >
+            <img src={images.webp.substring(1)} alt={name}/>
+        </div>
+    </main>
 </Layout>
