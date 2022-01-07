@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro"
+import Title from "../../components/Title.astro"
 import data from "../../data/data.json"
 
 
@@ -17,8 +18,8 @@ export async function getStaticPaths() {
 }
 
 
-// console.log(Astro.props);
-const {name,images,description,distance,travel} = Astro.props.post
+const {slug}= Astro.request.params
+const {name,images,description} = Astro.props.post
 
 let title = `Space Travel | ${name}`;
 let Metadescription = "Space Travel Project";
@@ -27,16 +28,129 @@ let canonicalURL = Astro.request.canonicalURL;
 
 
 
-
 ---
+<style lang="scss">
+    main{
+        display: grid;
+        text-align: center;
+        column-gap: var(--container-gap, 2rem);
+        padding-inline: 1rem;
+        grid-template-areas:
+                "title"
+                "image"
+                "tabs"
+                "content"
+    }
+    .image_sm{
+        grid-area: image;
+        max-width: 100%;
+        margin-inline: auto;
+    }
+    .image_xl{
+        display: none;
+    }
+  
+    .content{
+        grid-area: content;
+    }
+    .tab-list{
+        grid-area: tabs;
+        justify-content: center;
+        
+    }
+    a{
+        text-decoration: none;
+    }
+    p{
+        max-width: 50ch;
+        margin-inline: auto;
+    }
+    .number-indicators a{
+        width: 40px;
+        height: 40px;
+    }
+   
+    @media (min-width:23.5em){
+        main{
+            --flow-space: 2rem;
+            grid-template-areas:
+                "title"
+                "image"
+                "tabs"
+                "content"
+                ;
+                    }
+        .image_xl{
+            display: none;
+            margin-top: 3rem;
+        }
+        .tab-list{
+            margin-top: 3rem;
+        }
+        .number-indicators a{
+            width: 60px;
+            height: 60px;
+    }
+    }
+    @media (min-width:48.1em){
+        main{
+            text-align: left;
+            justify-items: start;
+            align-items: start;
+            grid-template-columns: 10rem 5rem 1fr 1fr;
+            grid-template-areas: 
+            ". title title ."
+            ". tabs content image"
+            ". tabs content image"
+        ;
+        }
+        .image_sm{
+        display: none;
+        }
+        .tab-list{
+            flex-direction: column;
+            
+        }
+        .image_xl{
+            display: block;
+            grid-area: image;
+            margin-left: auto;
+        }
+       
+        p{
+            margin:1.5rem 0 0 0;
+        }
+        .number-indicators a{
+            width: 80px;
+            height: 80px;
+        }
+      
+
+    }
+  
+</style>
 <Layout title={title} description={Metadescription} current="technology" permalink={permalink} {canonicalURL}>
-    {data.technology.map((tech)=>{
-        return (
-            <a href=`/technology/${tech.name.toLowerCase().split(" ").join("-")}`>
-                {tech.name}
-            </a>
-        )
-    })}
-	<h1>{name}</h1>
-    <img src={images.portrait.substring(1)} alt={name}/>
+    <main class="flow" id="main-content" aria-label="main" style="--flow-space: 1rem">
+        <Title number="03" title="SPACE LAUNCH 101"/>
+        <div class="tab-list number-indicators d-flex">
+            {data.technology.map((tech,index)=>{
+                return (
+                    <a aria-selected={`${slug === tech.name.toLowerCase().split(" ").join("-")?"true":"false"}`} href=`/technology/${tech.name.toLowerCase().split(" ").join("-")}`>
+                        <span class="sr-only">{tech.name}</span>{index+1}
+                    </a>
+                )
+            })}
+        </div>
+        <div class="content flow">
+            <p class="nav ff-serif uppercase text-accent">The terminology ...</p>
+            <h1 class="h3 uppercase ff-serif">{name}</h1>
+            <p class="text-accent">{description}</p>
+        </div>
+        <div class="image_xl">
+            <img src={images.portrait.substring(1)} alt={name}/>
+        </div>
+        <div class="image_sm">
+            <img src={images.landscape.substring(1)} alt={name}/>
+        </div>
+    </main>
 </Layout>
