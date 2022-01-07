@@ -30,7 +30,7 @@
 }
 
 /* font-sizes & letter spacing tablet */
-@media (min-width: 35em) {
+@media (min-width: 23.5em) {
   :root {
     /* font-sizes */
     --fs-900: 9.375rem;
@@ -45,7 +45,7 @@
   }
 }
 /* font-sizes & letter spacing desktop */
-@media (min-width: 45em) {
+@media (min-width: 48.1em) {
   :root {
     /* font-sizes */
 
@@ -386,14 +386,14 @@ body {
   background-image: url("./home/background-home-mobile.jpg");
 }
 
-@media (min-width: 35em) {
+@media (min-width: 23.5em) {
   .home {
     background-position: center center;
     background-image: url(./home/background-home-tablet.jpg);
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 48.1em) {
   .home {
     background-image: url(./home/background-home-desktop.jpg);
   }
@@ -405,14 +405,14 @@ body {
   background-image: url("./destination/background-destination-mobile.jpg");
 }
 
-@media (min-width: 35em) {
+@media (min-width: 23.5em) {
   .destination {
     background-position: center center;
     background-image: url(./destination/background-destination-tablet.jpg);
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 48.1em) {
   .destination {
     background-image: url(./destination/background-destination-desktop.jpg);
   }
@@ -424,14 +424,14 @@ body {
   background-image: url("./crew/background-crew-mobile.jpg");
 }
 
-@media (min-width: 35em) {
+@media (min-width: 23.5em) {
   .crew {
     background-position: center center;
     background-image: url(./crew/background-crew-tablet.jpg);
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 48.1em) {
   .crew {
     background-image: url(./crew/background-crew-desktop.jpg);
   }
@@ -443,14 +443,14 @@ body {
   background-image: url("./technology/background-technology-mobile.jpg");
 }
 
-@media (min-width: 35em) {
+@media (min-width: 23.5em) {
   .technology {
     background-position: center center;
     background-image: url(./technology/background-technology-tablet.jpg);
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 48.1em) {
   .technology {
     background-image: url(./technology/background-technology-desktop.jpg);
   }
