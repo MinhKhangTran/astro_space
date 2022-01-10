@@ -7,6 +7,7 @@ export interface Props {
 }
 
 const { title, description, permalink,canonicalURL } = Astro.props as Props;
+const socialUrl = Astro.site.href + 'assets/social.jpg'
 
 ---
 
@@ -48,6 +49,7 @@ const { title, description, permalink,canonicalURL } = Astro.props as Props;
 <meta property="og:url" content={permalink} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:image" content={socialUrl} />
 
 
 <!-- Twitter -->
@@ -55,3 +57,4 @@ const { title, description, permalink,canonicalURL } = Astro.props as Props;
 <meta property="twitter:url" content={permalink} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialUrl} />
