@@ -25,9 +25,8 @@ Getting local json files as imports✅
 ### Set up the components with semantic HTML
 
 - Navbar ✅
-- Button
-- Title
-- Tabs/dots/Numbers
+- Button ✅
+- Title ✅
 - SEO ✅
 
 ## Tabs functionality
@@ -42,4 +41,4 @@ Getting local json files as imports✅
 
 - Reset✅
 - Utility classes✅
-- Component and Page specific styles
+- Component and Page specific styles ✅
